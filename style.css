@@ -1,0 +1,135 @@
+
+body{font-size: 20px;
+    font-family: 'Noto Sans TC', sans-serif;
+    margin: -1px
+
+}
+
+
+
+
+nav{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+
+
+}
+nav>.head{
+    flex:none;width: 200px;
+    font-weight: bold;
+    margin-top:5px;
+
+
+}
+nav>.headcenter{
+    flex:auto;
+
+}
+nav>.headleft{    
+    flex: none;
+    align-items:flex-start;   
+    justify-content: center;     
+    
+    
+}
+ul{
+        margin:0px;
+        padding: 0px;;
+        list-style:none; 
+         
+    }
+ul > li{  
+    /* 選單靠右並排 */
+    float:right;  
+
+    margin-right:10px;
+    margin-top:5px;
+
+    position: relative;
+    padding-top:0px;
+}
+.burger{
+    width: 20px;
+    height: 20px;
+    display: none;
+}
+.headbox{
+    background-color: rgb(204, 219, 247);
+
+
+    box-sizing: border-box;
+    text-align: center ;
+    width: 100%;
+    position: relative;
+    height: 300px;
+    font-size: 40px;
+
+    padding-top: 130px;
+    font-weight: bold;
+
+
+}  
+.content{
+    width: 1200px;
+    margin-left: auto;margin-right: auto;
+    background-size: cover;
+
+
+}
+.box{
+    height: 200px;width: 270px;
+    padding: 0px;margin:10px;
+    background-color: rgb(204, 219, 247);
+    display:inline-block;
+    flex:none;
+    margin-bottom:1px;
+
+
+
+
+}
+.box img {
+    width: 100%;
+    height: 85%;
+
+}
+.text{
+    
+    text-align: center;
+    line-height: 18px;
+    font-size: 20px;
+
+
+}
+
+photo{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+}
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+    .content{width: 90%; text-align: center;}
+    .box{width: 40%;
+        height: 34%;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+    .content{width: 90%; text-align: center;}
+    .box{width: 90%;height: 20%}
+
+    .welcome{
+        font-size: 250%;
+    }
+    .burger{
+        display: block;
+    }
+    .headleft{
+        display: none;
+    }
+    /* .text{ font-size:;} */
+
+}
