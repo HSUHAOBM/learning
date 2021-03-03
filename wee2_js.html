@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week2.js</title>
+    <script text="JavaScript">
+        console.log("第一題")
+
+        function calculate(min, max){
+        result=0
+        for(i=min;i<max+1;i++)
+        {
+            result+=i
+        }
+        console.log(result)
+        // 請用你的程式補完這個函式的區塊
+        }
+        calculate(1, 3); // 你的程式要能夠計算 1+2+3，最後印出 6
+        calculate(4, 8); // 你的程式要能夠計算 4+5+6+7+8，最後印出 30
+        
+        console.log("第二題")
+        function avg(data){
+            salarysum=0;
+            number=data["count"];
+            for(i=0;i<number;i++)
+            {
+                salarysum+=data["employees"][i]["salary"]
+
+            }
+            result02=Math.round(salarysum/number)  ;
+            salary=data["employees"][0]["salary"];
+            console.log('共'+number+'人','平均薪資為'+result02+'元')
+
+        // 請用你的程式補完這個函式的區塊
+        }
+        avg({
+        "count":3,
+        "employees":[
+        {
+        "name":"John",
+        "salary":30000
+        },
+        {
+        "name":"Bob",
+        "salary":60000
+        },
+        {
+        "name":"Jenny",
+        "salary":50000
+        }
+        ]
+        }); // 呼叫 avg 函式
+        
+        
+        console.log("第三題")
+        function maxProduct(nums){
+            let maxnumberlist = [];
+            for(i=0;i<nums.length;i++){
+                // console.log("i:",i);
+                for(j=i+1;j<nums.length;j++){
+                    result03=nums[i]*nums[j];
+                    maxnumberlist.push(result03)
+                    // console.log("j:",j);
+                    // console.log(nums[i],nums[j],result03)
+                }
+
+            }
+            // console.log(maxnumberlist)
+            var max = maxnumberlist[0];
+            for ( i = 1; i < maxnumberlist.length; i++  ) {
+            if (maxnumberlist[i] > max) {
+            max = maxnumberlist[i];}
+            }
+            console.log(max)
+            }
+        maxProduct([5, 20, 2, 6]); // 得到 120 因為 20 和 6 相乘得到最大值
+        maxProduct([10, -20, 0, 3]); // 得到 30 因為 10 和 3 相乘得到最大值
+
+        console.log("第四題")
+        function twoSum(nums, target){
+            for(i=0;i<nums.length;i++){
+                for(j=i+1;j<nums.length;j++){
+                    result=nums[i]+nums[j]
+                    if(result==target){
+                        return "數字"+target+"為:nums["+nums.indexOf(nums[i])+"]:"+nums[i]+" + num["+nums.indexOf(nums[j])+"]:"+nums[j]
+                    }
+                }
+            }
+        // your code here
+        }
+        result=twoSum([2, 11, 7, 15], 9)
+        console.log(result) // show [0, 2] because nums[0]+nums[2] is 9
+
+        console.log("第五題")
+        function maxZeros(nums){
+            let recordlist = [];
+            total=0
+
+            for(i=0;i<nums.length;i++){
+                // console.log(nums[i])
+                if(nums[i]==0){
+                    total=total+1;
+                    recordlist.push(total);
+
+                }
+                else {
+                    total=0;
+                    recordlist.push(total);
+
+                }                    
+
+            }
+            var max = recordlist[0];
+            for ( i = 1; i < recordlist.length; i++  ) {
+            if (recordlist[i] > max) {max = recordlist[i];}}
+            console.log(max)
+           
+            // console.log(recordlist)
+        }
+        maxZeros([0, 1, 0, 0]) // 得到 2
+        maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]) // 得到 4
+        maxZeros([1, 1, 1, 1, 1]) // 得到 0
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
