@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week4.index</title>
+    <style>
+        body {
+            font-family: "微軟正黑體";
+            margin: 30px;
+        }
+
+        .headbox {
+            background-color: rgb(204, 219, 247);
+
+
+            box-sizing: border-box;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            height: 150px;
+            font-size: 40px;
+
+            padding-top: 50px;
+            font-weight: bold;
+
+
+        }
+
+        form {
+            line-height: 2em;
+        }
+
+        form>input {
+            padding: 5px 5px;
+            border: 1px solid rgb(129, 126, 126);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="headbox">歡迎光臨，請輸入帳號密碼</div>
+    <div style="text-align: center;font-size: 18px">
+        <form action="/signin" method="post">
+            帳號：<input type="text" placeholder=" test " required pattern="[0-9a-zA-Z]{4,12}" name="account" />
+            <br />
+            密碼：<input type="password" required pattern="[0-9a-zA-Z]{4,12}" name="password" />
+            <br />
+            <button>登入</button>
+
+        </form>
+    </div>
+</body>
+
+</html>
