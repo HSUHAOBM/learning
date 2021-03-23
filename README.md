@@ -4,3 +4,12 @@
 
 2.使用 SELECT 指令取得所有在 user 資料表中的使用者資料。
 ![1616497756021](https://user-images.githubusercontent.com/73993570/112151727-813a8100-8c1c-11eb-99ec-a6574ba7e933.jpg)
+
+3.使用 SELECT 指令取得 user 資料表中總共有幾筆資料。
+![1616505396312](https://user-images.githubusercontent.com/73993570/112152400-3836fc80-8c1d-11eb-848c-81a59802a7b6.jpg)
+
+4.使用 SELECT 指令取得所有在 user 資料表中的使用者資料，並按照 time 欄位，由近到遠排序。
+![1616505597510](https://user-images.githubusercontent.com/73993570/112152858-b1365400-8c1d-11eb-9a9f-89b0954bfcae.jpg)
+
+
+
