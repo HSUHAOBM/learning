@@ -1,3 +1,6 @@
 
-使用 INSERT 新增一筆資料到 user 資料表中，這筆資料的 username 和password 欄位必須是 ply。
+1.使用 INSERT 新增一筆資料到 user 資料表中，這筆資料的 username 和password 欄位必須是 ply。
 ![1616497731987](https://user-images.githubusercontent.com/73993570/112151530-49cbd480-8c1c-11eb-828b-678c3af8bf30.jpg)
+
+2.使用 SELECT 指令取得所有在 user 資料表中的使用者資料。
+![1616497756021](https://user-images.githubusercontent.com/73993570/112151727-813a8100-8c1c-11eb-99ec-a6574ba7e933.jpg)
