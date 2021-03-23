@@ -9,10 +9,10 @@
 ![1616505396312](https://user-images.githubusercontent.com/73993570/112152400-3836fc80-8c1d-11eb-848c-81a59802a7b6.jpg)
 
 4.使用 SELECT 指令取得所有在 user 資料表中的使用者資料，並按照 time 欄位，由近到遠排序。
-![1616505597510](https://user-images.githubusercontent.com/73993570/112152858-b1365400-8c1d-11eb-9a9f-89b0954bfcae.jpg)
+![1616515594569](https://user-images.githubusercontent.com/73993570/112178575-d4203280-8c34-11eb-87c5-57521ad4991b.jpg)
 
 5.使用 SELECT 指令取得 user 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，由近到遠排序。
-![1616507927470](https://user-images.githubusercontent.com/73993570/112158565-412acc80-8c23-11eb-9fff-e10505ddccba.jpg)
+![1616515888813](https://user-images.githubusercontent.com/73993570/112179299-87892700-8c35-11eb-9484-ee534d45d608.jpg)
 
 6.使用 SELECT 指令取得欄位 username 是 ply 的使用者資料。
 ![1616509713918](https://user-images.githubusercontent.com/73993570/112162600-28bcb100-8c27-11eb-9fee-93547996977d.jpg)
