@@ -31,7 +31,6 @@ def Registered():
 #     print(ReUser,ReAccount,RePassword)
 
     try:
-        DBUserNameList=[]
         connection = mysql.connector.connect(
         host='localhost',         
         database='website', 
@@ -40,14 +39,11 @@ def Registered():
 
         #檢查是否註冊過
         cursor = connection.cursor()
-        cursor.execute("SELECT username FROM user;")
-        records = cursor.fetchall()
+        cursor.execute("SELECT * FROM user WHERE username= '%s';" % (ReAccount))
+        records = cursor.fetchone()
 
-
-        for i in range(cursor.rowcount):
-            DBUserNameList.append(records[i][0])
             
-        if (ReAccount in DBUserNameList):
+        if (records != None):
             print("註冊過了")
             return redirect('/error/?message=此帳號已註冊使用')
 
@@ -78,7 +74,6 @@ def Signin():
     Password=request.form["password"]
     
     try:
-        DBUserNameList=[]
         connection = mysql.connector.connect(
         host='localhost',         
         database='website', 
@@ -86,23 +81,20 @@ def Signin():
         password='root')  # 資料庫密碼
         cursor = connection.cursor()
 
-    #檢查是否註冊過
+        #檢查是否註冊過
         cursor = connection.cursor()
-        cursor.execute("SELECT username FROM user;")
-        records = cursor.fetchall()
-        for i in range(cursor.rowcount):
-            DBUserNameList.append(records[i][0])
-        
-        if (Account in DBUserNameList):
-            print("帳號正確。。開始檢查密碼")
-            cursor.execute("SELECT name,password FROM user WHERE username= '%s';" % (Account))
-            records = cursor.fetchall()
-#             print(records[0][0],"的密碼為:"+records[0][1])
+        cursor.execute("SELECT name,password FROM user WHERE username= '%s';" % (Account))
+        records = cursor.fetchone()
 
-            if (Password==records[0][1]):
+            
+        if (records != None):
+            print("帳號正確。。開始檢查密碼")
+            print(records[0],"的密碼為:"+records[1])
+
+            if (Password==records[1]):
                 print("密碼驗證成功")
                 session['username'] = Account
-                session['name']=records[0][0]
+                session['name']=records[0]
                 return redirect('/menber')
             else:
                 print("密碼錯誤")
