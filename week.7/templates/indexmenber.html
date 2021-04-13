@@ -62,10 +62,14 @@
             border-radius: 5px;
         }
 
-        .content {
+        .SearchText {
             text-align: center;
             font-size: 24px;
+        }
 
+        .UpdateText {
+            text-align: center;
+            font-size: 24px;
         }
     </style>
 </head>
@@ -82,9 +86,7 @@
         <!-- <form action="/searchname" method="post"> -->
         <form name="SearchAccountName">
             <input type="text" placeholder=" 輸入會員帳號 " required pattern="[0-9a-zA-Z]{4,12}" name="account" />
-
             <input type="button" onClick="SearchName()" value="查詢"></button>
-
         </form>
 
         <script src="scripts.js"></script>
@@ -93,16 +95,13 @@
     </div>
 
     <br />
-
-    <!-- <h2 style="text-align: center;">更新會員姓名</h2>
+    <h2 id="table" style="text-align: center;">更新會員姓名</h2>
     <div style="text-align: center;font-size: 18px">
-        <form action="/updatename" method="post">
-            <input type="text" required pattern="[0-9a-zA-Z]{4,12}" name="account" />
-
-            <button>更新</button>
-
+        <form action="/api/user" method="post" name="UpdateAccountName">
+            <input type="text" placeholder=" 輸入新的名" required pattern="{4,12}" name="newname" />
+            <input type="button" onClick="UpdateNameData()" value="更改"></button>
         </form>
-    </div> -->
+    </div>
 </body>
 
 </html>

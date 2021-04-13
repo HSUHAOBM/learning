@@ -1,6 +1,9 @@
 from flask import Flask,session,request,redirect,render_template
 import mysql.connector
 from flask_cors import CORS
+import json
+from flask import jsonify
+
 
  # 資料庫
 DBhost='localhost'        
@@ -22,10 +25,9 @@ app.config['JSON_AS_ASCII'] = False
 #首頁
 @app.route("/")
 def home():
-    username = session.get('username')
-    ReUser=session.get('name')
-    if username:
-        return render_template("indexmenber.html",user=ReUser)
+    UserAccount = session.get('UserAccount')
+    if UserAccount:
+        return redirect('/menber')
     else:
         return render_template("index.html")
 
@@ -36,7 +38,7 @@ def Registered():
     ReAccount=request.form["useraccount"]
     RePassword=request.form["userpassword"]
 #     print(ReUser,ReAccount,RePassword)
-    if not ReUser or not ReAccount or not RePassword:
+    if not ReUser.strip() or not ReAccount.strip() or not RePassword.strip():
         return redirect('/error/?message=資料為空白')
     
     try:
@@ -101,8 +103,8 @@ def Signin():
 
             if (Password==records[1]):
                 print("密碼驗證成功")
-                session['username'] = Account
-                session['name']=records[0]
+                session['UserAccount'] = Account
+                session['UserName']=records[0]
                 return redirect('/menber')
             else:
                 print("密碼錯誤")
@@ -121,10 +123,10 @@ def Signin():
 #會員
 @app.route("/menber")
 def Menber():
-    username = session.get('username')
-    ReUser=session.get('name')
-    if username:
-        return render_template("indexmenber.html",user=ReUser)
+    UserAccount = session.get('UserAccount')
+    UserName=session.get('UserName')
+    if UserAccount:
+        return render_template("indexmenber.html",user=UserName)
     else:
         return redirect('/')
 
@@ -134,6 +136,53 @@ def Error():
     html_text=request.args.get("message","自訂的錯誤訊息")
     
     return render_template("indexerror.html",text=html_text)
+
+#修改會員姓名 API
+@app.route("/api/user", methods=["POST"])#http://127.0.0.1:3000/api/user
+def MenberUpdateNameApi():
+    
+    data = request.get_json()
+    NewAccountName = data['name']
+    print("使用者輸入的名子:",NewAccountName)
+#     return jsonify({"姓名": username})  
+    
+    UserAccount = session.get('UserAccount')  #使用者帳號
+    UserName=session.get('UserName') #原本姓名
+    
+    try:
+        connection = mysql.connector.connect(
+        host=DBhost,         
+        database=DBdatabase, 
+        user=DBuser,      
+        password=DBpassword) 
+        
+        #變更
+        cursor = connection.cursor()
+        cursor.execute("update user set name='%s' where username='%s' ;" % (NewAccountName,UserAccount))
+        connection.commit()
+        
+        
+        #檢查新設定的名有無在資料庫
+        cursor = connection.cursor()
+        cursor.execute("select id from user where name='%s' and username='%s';" % (NewAccountName,UserAccount))
+        records = cursor.fetchone()
+        print("records",records)
+            
+        if (records):
+            session['UserName']=NewAccountName
+            print(session)
+            return {"ok":True}
+
+
+        else:
+            return {"error":True}
+
+    finally:
+        if (connection.is_connected()):
+            cursor.close()
+            connection.close()
+            print("資料庫連線已關閉")
+
 
 
 #API
@@ -151,7 +200,6 @@ def MemberAccountAPI():
         cursor = connection.cursor()
         cursor.execute("SELECT id,name,username FROM user WHERE username= '%s';" % (MemberAccount))
         records = cursor.fetchone()
-        print(records)
             
         if (records):
             return {"data":{"id":records[0],"name":records[1],"username":records[2]}}
